@@ -20,6 +20,7 @@ documented, simulate-able project every day.
 | 4 | Asynchronous (dual-clock) FIFO | clock-domain crossing, Gray-code pointers, two-flop synchronizers, safe full/empty flags, golden-queue self-checking TB | [`Day4`](./Day4) |
 | 5 | Configurable UART (TX + RX) | 8-N-1 framing, LSB-first, run-time baud divider, mid-bit sampling, two-flop line sync, TX→RX loopback self-checking TB | [`Day5`](./Day5) |
 | 6 | Parameterized Sequential Integer Divider | restoring shift-subtract, multicycle FSM, start/busy/done handshake, quotient+remainder, divide-by-zero policy, golden `/`&`%` self-checking TB | [`Day6`](./Day6) |
+| 7 | AXI4-Lite Slave Register Block | AW/W/B/AR/R VALID/READY handshakes, WSTRB byte strobes, OKAY/SLVERR, RW/RO/W1C registers, task-based master BFM + golden-model self-checking TB | [`Day7`](./Day7) |
 
 _More days coming._
 
@@ -61,6 +62,12 @@ RTL-Projects-Everyday/
 ├── Day6/
 │   ├── seq_divider.sv             # RTL design (restoring shift-subtract divider)
 │   ├── tb_seq_divider.sv          # self-checking testbench (golden / and % model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day7/
+│   ├── axi4lite_regs.sv           # RTL design (AXI4-Lite slave register block)
+│   ├── tb_axi4lite_regs.sv        # self-checking testbench (master BFM + golden model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
