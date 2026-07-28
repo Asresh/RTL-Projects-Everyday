@@ -17,6 +17,7 @@ documented, simulate-able project every day.
 | 1 | Parameterized Synchronous FIFO | pointers, occupancy counter, full/empty flags, self-checking TB | [`Day1`](./Day1) |
 | 2 | Parameterized Round-Robin Arbiter | fair rotating priority, one-hot grant, priority mask, wrap-around, self-checking TB | [`Day2`](./Day2) |
 | 3 | Configurable SPI Master (all 4 modes) | CPOL/CPHA modes, programmable SCLK divider, full-duplex shift engine, FSM, chip-select framing, self-checking TB + slave model | [`Day3`](./Day3) |
+| 4 | Asynchronous (dual-clock) FIFO | clock-domain crossing, Gray-code pointers, two-flop synchronizers, safe full/empty flags, golden-queue self-checking TB | [`Day4`](./Day4) |
 
 _More days coming._
 
@@ -40,6 +41,12 @@ RTL-Projects-Everyday/
 ├── Day3/
 │   ├── spi_master.sv              # RTL design
 │   ├── tb_spi_master.sv           # self-checking testbench + slave model
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day4/
+│   ├── async_fifo.sv              # RTL design (dual-clock FIFO, Gray-pointer CDC)
+│   ├── tb_async_fifo.sv           # self-checking testbench (golden-queue model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
