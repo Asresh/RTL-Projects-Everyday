@@ -1,0 +1,15 @@
+# Simulation build artifacts
+obj_dir/
+work/
+simv
+simv.vvp
+simv.daidir/
+csrc/
+*.vcd
+*.vpd
+*.wlf
+*.log
+*.key
+ucli.key
+transcript
+.DS_Store
