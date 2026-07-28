@@ -16,6 +16,7 @@ documented, simulate-able project every day.
 |-----|---------|----------|--------|
 | 1 | Parameterized Synchronous FIFO | pointers, occupancy counter, full/empty flags, self-checking TB | [`Day1`](./Day1) |
 | 2 | Parameterized Round-Robin Arbiter | fair rotating priority, one-hot grant, priority mask, wrap-around, self-checking TB | [`Day2`](./Day2) |
+| 3 | Configurable SPI Master (all 4 modes) | CPOL/CPHA modes, programmable SCLK divider, full-duplex shift engine, FSM, chip-select framing, self-checking TB + slave model | [`Day3`](./Day3) |
 
 _More days coming._
 
@@ -35,6 +36,12 @@ RTL-Projects-Everyday/
 │   ├── tb_round_robin_arbiter.sv  # self-checking testbench
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # waveform image
+│   └── README.md                  # project write-up
+├── Day3/
+│   ├── spi_master.sv              # RTL design
+│   ├── tb_spi_master.sv           # self-checking testbench + slave model
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
