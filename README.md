@@ -21,6 +21,7 @@ documented, simulate-able project every day.
 | 5 | Configurable UART (TX + RX) | 8-N-1 framing, LSB-first, run-time baud divider, mid-bit sampling, two-flop line sync, TX→RX loopback self-checking TB | [`Day5`](./Day5) |
 | 6 | Parameterized Sequential Integer Divider | restoring shift-subtract, multicycle FSM, start/busy/done handshake, quotient+remainder, divide-by-zero policy, golden `/`&`%` self-checking TB | [`Day6`](./Day6) |
 | 7 | AXI4-Lite Slave Register Block | AW/W/B/AR/R VALID/READY handshakes, WSTRB byte strobes, OKAY/SLVERR, RW/RO/W1C registers, task-based master BFM + golden-model self-checking TB | [`Day7`](./Day7) |
+| 8 | I2C Master Controller | open-drain wired-AND bus, START/STOP, 7-bit addr + R/W̅, per-byte ACK/NACK, 4-phase SCL timing, clock-stretch aware, behavioral slave-model self-checking TB | [`Day8`](./Day8) |
 
 _More days coming._
 
@@ -68,6 +69,12 @@ RTL-Projects-Everyday/
 ├── Day7/
 │   ├── axi4lite_regs.sv           # RTL design (AXI4-Lite slave register block)
 │   ├── tb_axi4lite_regs.sv        # self-checking testbench (master BFM + golden model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day8/
+│   ├── i2c_master.sv              # RTL design (open-drain single-master I2C)
+│   ├── tb_i2c_master.sv           # self-checking testbench (behavioral slave model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
