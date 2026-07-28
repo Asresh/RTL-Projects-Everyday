@@ -19,6 +19,7 @@ documented, simulate-able project every day.
 | 3 | Configurable SPI Master (all 4 modes) | CPOL/CPHA modes, programmable SCLK divider, full-duplex shift engine, FSM, chip-select framing, self-checking TB + slave model | [`Day3`](./Day3) |
 | 4 | Asynchronous (dual-clock) FIFO | clock-domain crossing, Gray-code pointers, two-flop synchronizers, safe full/empty flags, golden-queue self-checking TB | [`Day4`](./Day4) |
 | 5 | Configurable UART (TX + RX) | 8-N-1 framing, LSB-first, run-time baud divider, mid-bit sampling, two-flop line sync, TX→RX loopback self-checking TB | [`Day5`](./Day5) |
+| 6 | Parameterized Sequential Integer Divider | restoring shift-subtract, multicycle FSM, start/busy/done handshake, quotient+remainder, divide-by-zero policy, golden `/`&`%` self-checking TB | [`Day6`](./Day6) |
 
 _More days coming._
 
@@ -54,6 +55,12 @@ RTL-Projects-Everyday/
 ├── Day5/
 │   ├── uart.sv                    # RTL design (uart_tx + uart_rx + full-duplex top)
 │   ├── tb_uart.sv                 # self-checking testbench (TX→RX loopback)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day6/
+│   ├── seq_divider.sv             # RTL design (restoring shift-subtract divider)
+│   ├── tb_seq_divider.sv          # self-checking testbench (golden / and % model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
