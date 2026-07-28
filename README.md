@@ -15,6 +15,7 @@ documented, simulate-able project every day.
 | Day | Project | Concepts | Folder |
 |-----|---------|----------|--------|
 | 1 | Parameterized Synchronous FIFO | pointers, occupancy counter, full/empty flags, self-checking TB | [`Day1`](./Day1) |
+| 2 | Parameterized Round-Robin Arbiter | fair rotating priority, one-hot grant, priority mask, wrap-around, self-checking TB | [`Day2`](./Day2) |
 
 _More days coming._
 
@@ -29,6 +30,12 @@ RTL-Projects-Everyday/
 │   ├── tb_sync_fifo.sv    # self-checking testbench
 │   ├── Makefile           # simulator run targets
 │   └── README.md          # project write-up
+├── Day2/
+│   ├── round_robin_arbiter.sv     # RTL design
+│   ├── tb_round_robin_arbiter.sv  # self-checking testbench
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # waveform image
+│   └── README.md                  # project write-up
 └── README.md
 ```
 
