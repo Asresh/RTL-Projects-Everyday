@@ -61,6 +61,19 @@ This one is parameterizable in both **data width** and **depth**.
 
 ---
 
+## Simulation timing
+
+![sync_fifo timing diagram](docs/sync_fifo_waveform.png)
+
+*Illustrative cycle-accurate timing (`DEPTH=4`) of the expected behavior: the FIFO
+fills to `full`, ignores a write while full (`E5`, overflow-protected), drains with
+the one-cycle registered read latency, then asserts `empty` and ignores a further
+read (underflow-protected).*
+
+> Note: this diagram was produced by cycle-accurate hand-modeling of the RTL, not
+> captured from a simulator run. Running `make verilator` also emits a
+> `sync_fifo.vcd` you can open in GTKWave to view the real waveform.
+
 ## How it works
 
 - **Two pointers** (`wr_ptr`, `rd_ptr`) index a memory array; each advances on a
