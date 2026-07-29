@@ -25,6 +25,7 @@ documented, simulate-able project every day.
 | 9 | Pipelined CORDIC Sine/Cosine Engine | rotation-mode CORDIC, multiplier-free (add/sub + shifts), fully-unrolled pipeline, quadrant folding for full [-π, π] range, 1/K gain pre-scale, fixed-point Q2.13, golden `$sin`/`$cos` self-checking TB | [`Day9`](./Day9) |
 | 10 | SECDED Hamming ECC Codec | (72,64) single-error-correct/double-error-detect, interleaved parity positions, syndrome decode, overall-parity bit, 1-of-72 corrector, parameterized width, 2-stage pipeline, error-injection scoreboard TB | [`Day10`](./Day10) |
 | 11 | Pipelined Bitonic Sorting Network | data-independent compare-exchange network, log²-depth pipeline (S=6 stages, 24 CEs for N=8), 1 vector/clock throughput, constant 7-cycle latency, signed/unsigned + asc/desc, elaboration-generated wiring, golden-sort scoreboard TB | [`Day11`](./Day11) |
+| 12 | Pipelined Radix-4 Booth Multiplier | modified-Booth recoding (halves partial products to 8 for W=16), signed digits {−2,−1,0,+1,+2}, Wallace 3:2 carry-save reduction tree (8→6→4→3→2), final carry-propagate adder, 4-stage pipeline (1 multiply/clock), signed/unsigned, golden-`*` scoreboard TB | [`Day12`](./Day12) |
 
 _More days coming._
 
@@ -98,6 +99,12 @@ RTL-Projects-Everyday/
 │   ├── tb_bitonic_sorter.sv       # self-checking testbench (golden-sort scoreboard)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # CE-network diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day12/
+│   ├── booth_multiplier.sv        # RTL design (pipelined radix-4 Booth multiplier)
+│   ├── tb_booth_multiplier.sv     # self-checking testbench (golden-* scoreboard)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # datapath diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
