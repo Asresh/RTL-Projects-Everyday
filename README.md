@@ -24,6 +24,7 @@ documented, simulate-able project every day.
 | 8 | I2C Master Controller | open-drain wired-AND bus, START/STOP, 7-bit addr + R/W̅, per-byte ACK/NACK, 4-phase SCL timing, clock-stretch aware, behavioral slave-model self-checking TB | [`Day8`](./Day8) |
 | 9 | Pipelined CORDIC Sine/Cosine Engine | rotation-mode CORDIC, multiplier-free (add/sub + shifts), fully-unrolled pipeline, quadrant folding for full [-π, π] range, 1/K gain pre-scale, fixed-point Q2.13, golden `$sin`/`$cos` self-checking TB | [`Day9`](./Day9) |
 | 10 | SECDED Hamming ECC Codec | (72,64) single-error-correct/double-error-detect, interleaved parity positions, syndrome decode, overall-parity bit, 1-of-72 corrector, parameterized width, 2-stage pipeline, error-injection scoreboard TB | [`Day10`](./Day10) |
+| 11 | Pipelined Bitonic Sorting Network | data-independent compare-exchange network, log²-depth pipeline (S=6 stages, 24 CEs for N=8), 1 vector/clock throughput, constant 7-cycle latency, signed/unsigned + asc/desc, elaboration-generated wiring, golden-sort scoreboard TB | [`Day11`](./Day11) |
 
 _More days coming._
 
@@ -91,6 +92,12 @@ RTL-Projects-Everyday/
 │   ├── tb_hamming_secded.sv       # self-checking testbench (error-injection scoreboard)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day11/
+│   ├── bitonic_sorter.sv          # RTL design (pipelined bitonic sorting network)
+│   ├── tb_bitonic_sorter.sv       # self-checking testbench (golden-sort scoreboard)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # CE-network diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
