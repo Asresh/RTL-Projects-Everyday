@@ -22,6 +22,7 @@ documented, simulate-able project every day.
 | 6 | Parameterized Sequential Integer Divider | restoring shift-subtract, multicycle FSM, start/busy/done handshake, quotient+remainder, divide-by-zero policy, golden `/`&`%` self-checking TB | [`Day6`](./Day6) |
 | 7 | AXI4-Lite Slave Register Block | AW/W/B/AR/R VALID/READY handshakes, WSTRB byte strobes, OKAY/SLVERR, RW/RO/W1C registers, task-based master BFM + golden-model self-checking TB | [`Day7`](./Day7) |
 | 8 | I2C Master Controller | open-drain wired-AND bus, START/STOP, 7-bit addr + R/W̅, per-byte ACK/NACK, 4-phase SCL timing, clock-stretch aware, behavioral slave-model self-checking TB | [`Day8`](./Day8) |
+| 9 | Pipelined CORDIC Sine/Cosine Engine | rotation-mode CORDIC, multiplier-free (add/sub + shifts), fully-unrolled pipeline, quadrant folding for full [-π, π] range, 1/K gain pre-scale, fixed-point Q2.13, golden `$sin`/`$cos` self-checking TB | [`Day9`](./Day9) |
 
 _More days coming._
 
@@ -75,6 +76,12 @@ RTL-Projects-Everyday/
 ├── Day8/
 │   ├── i2c_master.sv              # RTL design (open-drain single-master I2C)
 │   ├── tb_i2c_master.sv           # self-checking testbench (behavioral slave model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day9/
+│   ├── cordic_sincos.sv           # RTL design (pipelined rotation-mode CORDIC)
+│   ├── tb_cordic_sincos.sv        # self-checking testbench (golden $sin/$cos model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
