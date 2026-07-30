@@ -29,6 +29,7 @@ documented, simulate-able project every day.
 | 13 | Pipelined IEEE-754 FP Adder (binary32) | single-precision add/subtract, exponent-compare + alignment barrel shift, guard/round/sticky **round-to-nearest-even**, leading-zero-count normalize, gradual underflow (subnormals), signed zeros, Inf/NaN special-case unit, overflow→Inf, 3-stage pipeline (1 add/clock), width-generic, host-FPU (`shortreal`) golden scoreboard TB | [`Day13`](./Day13) |
 | 14 | Output-Stationary Systolic-Array GEMM Accelerator | N×N MAC mesh (TPU-tile dataflow), output-stationary accumulators, A-east / B-south nearest-neighbour streaming, automatic diagonal space-time skew scheduler, activation-valid strobe, signed MAC with overflow-proof accumulator width, start/busy/done handshake, per-launch accumulator clear, golden-`longint`-matmul scoreboard TB | [`Day14`](./Day14) |
 | 15 | Pipelined Kogge-Stone Parallel Prefix-Sum (Segmented Scan) Engine | warp-level GPU scan primitive (stream compaction, radix-sort counts, sparse/segmented reduction), log2(N)-depth Kogge-Stone network, 1 vector/clock throughput at log2(N)-cycle latency, segmented scan with per-lane head flags + OR-scan flag propagation, overflow-proof widened accumulators, signed/unsigned, elaboration-generated network, golden segmented-scan scoreboard TB | [`Day15`](./Day15) |
+| 16 | SIMT Shared-Memory Bank-Conflict Resolution Crossbar | GPU shared-memory (CUDA `__shared__`/LDS) bank-conflict + broadcast hardware, word-interleaved bank mapping, per-bank leader-select conflict scheduler, same-address broadcast collapsing, pending-mask retire loop with guaranteed forward progress, `resp_phases` = measured conflict degree, warp-wide read gather, per-lane active mask, parameterized LANES/BANKS/depth, golden-model scoreboard TB (directed corners + 200 random warps) | [`Day16`](./Day16) |
 
 _More days coming._
 
@@ -126,6 +127,12 @@ RTL-Projects-Everyday/
 │   ├── tb_prefix_scan.sv          # self-checking testbench (golden segmented-scan model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # Kogge-Stone network diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day16/
+│   ├── smem_xbar.sv               # RTL design (SIMT shared-memory bank-conflict crossbar)
+│   ├── tb_smem_xbar.sv            # self-checking testbench (golden bank-conflict model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # datapath diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
