@@ -28,6 +28,7 @@ documented, simulate-able project every day.
 | 12 | Pipelined Radix-4 Booth Multiplier | modified-Booth recoding (halves partial products to 8 for W=16), signed digits {−2,−1,0,+1,+2}, Wallace 3:2 carry-save reduction tree (8→6→4→3→2), final carry-propagate adder, 4-stage pipeline (1 multiply/clock), signed/unsigned, golden-`*` scoreboard TB | [`Day12`](./Day12) |
 | 13 | Pipelined IEEE-754 FP Adder (binary32) | single-precision add/subtract, exponent-compare + alignment barrel shift, guard/round/sticky **round-to-nearest-even**, leading-zero-count normalize, gradual underflow (subnormals), signed zeros, Inf/NaN special-case unit, overflow→Inf, 3-stage pipeline (1 add/clock), width-generic, host-FPU (`shortreal`) golden scoreboard TB | [`Day13`](./Day13) |
 | 14 | Output-Stationary Systolic-Array GEMM Accelerator | N×N MAC mesh (TPU-tile dataflow), output-stationary accumulators, A-east / B-south nearest-neighbour streaming, automatic diagonal space-time skew scheduler, activation-valid strobe, signed MAC with overflow-proof accumulator width, start/busy/done handshake, per-launch accumulator clear, golden-`longint`-matmul scoreboard TB | [`Day14`](./Day14) |
+| 15 | Pipelined Kogge-Stone Parallel Prefix-Sum (Segmented Scan) Engine | warp-level GPU scan primitive (stream compaction, radix-sort counts, sparse/segmented reduction), log2(N)-depth Kogge-Stone network, 1 vector/clock throughput at log2(N)-cycle latency, segmented scan with per-lane head flags + OR-scan flag propagation, overflow-proof widened accumulators, signed/unsigned, elaboration-generated network, golden segmented-scan scoreboard TB | [`Day15`](./Day15) |
 
 _More days coming._
 
@@ -119,6 +120,12 @@ RTL-Projects-Everyday/
 │   ├── tb_systolic_matmul.sv      # self-checking testbench (golden longint matmul)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # array diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day15/
+│   ├── prefix_scan.sv             # RTL design (pipelined Kogge-Stone segmented scan)
+│   ├── tb_prefix_scan.sv          # self-checking testbench (golden segmented-scan model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # Kogge-Stone network diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
