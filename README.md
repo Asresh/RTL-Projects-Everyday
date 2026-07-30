@@ -30,6 +30,7 @@ documented, simulate-able project every day.
 | 14 | Output-Stationary Systolic-Array GEMM Accelerator | N×N MAC mesh (TPU-tile dataflow), output-stationary accumulators, A-east / B-south nearest-neighbour streaming, automatic diagonal space-time skew scheduler, activation-valid strobe, signed MAC with overflow-proof accumulator width, start/busy/done handshake, per-launch accumulator clear, golden-`longint`-matmul scoreboard TB | [`Day14`](./Day14) |
 | 15 | Pipelined Kogge-Stone Parallel Prefix-Sum (Segmented Scan) Engine | warp-level GPU scan primitive (stream compaction, radix-sort counts, sparse/segmented reduction), log2(N)-depth Kogge-Stone network, 1 vector/clock throughput at log2(N)-cycle latency, segmented scan with per-lane head flags + OR-scan flag propagation, overflow-proof widened accumulators, signed/unsigned, elaboration-generated network, golden segmented-scan scoreboard TB | [`Day15`](./Day15) |
 | 16 | SIMT Shared-Memory Bank-Conflict Resolution Crossbar | GPU shared-memory (CUDA `__shared__`/LDS) bank-conflict + broadcast hardware, word-interleaved bank mapping, per-bank leader-select conflict scheduler, same-address broadcast collapsing, pending-mask retire loop with guaranteed forward progress, `resp_phases` = measured conflict degree, warp-wide read gather, per-lane active mask, parameterized LANES/BANKS/depth, golden-model scoreboard TB (directed corners + 200 random warps) | [`Day16`](./Day16) |
+| 17 | GPU Warp Scheduler (Greedy-Then-Oldest) + Register Scoreboard | NVIDIA-class SM instruction-issue front-end, per-warp register scoreboard with RAW + WAW interlocks, fixed-latency writeback pipeline that sets/clears pending bits, Greedy-Then-Oldest arbitration (greedy hold on `last_warp`, oldest = lowest ready warp), single-cycle combinational ready→select path, one issue/cycle with one-hot consume strobe, guaranteed-progress (no deadlock) proof, parameterized NW/NREG/WB_LATENCY, independent golden-model TB asserting greedy/progress/no-hazard-escape over directed + randomized programs | [`Day17`](./Day17) |
 
 _More days coming._
 
@@ -131,6 +132,12 @@ RTL-Projects-Everyday/
 ├── Day16/
 │   ├── smem_xbar.sv               # RTL design (SIMT shared-memory bank-conflict crossbar)
 │   ├── tb_smem_xbar.sv            # self-checking testbench (golden bank-conflict model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # datapath diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day17/
+│   ├── warp_scheduler.sv          # RTL design (GTO warp scheduler + register scoreboard)
+│   ├── tb_warp_scheduler.sv       # self-checking testbench (independent golden model)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # datapath diagram + captured waveform
 │   └── README.md                  # project write-up
