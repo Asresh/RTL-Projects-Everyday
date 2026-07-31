@@ -32,6 +32,7 @@ documented, simulate-able project every day.
 | 16 | SIMT Shared-Memory Bank-Conflict Resolution Crossbar | GPU shared-memory (CUDA `__shared__`/LDS) bank-conflict + broadcast hardware, word-interleaved bank mapping, per-bank leader-select conflict scheduler, same-address broadcast collapsing, pending-mask retire loop with guaranteed forward progress, `resp_phases` = measured conflict degree, warp-wide read gather, per-lane active mask, parameterized LANES/BANKS/depth, golden-model scoreboard TB (directed corners + 200 random warps) | [`Day16`](./Day16) |
 | 17 | GPU Warp Scheduler (Greedy-Then-Oldest) + Register Scoreboard | NVIDIA-class SM instruction-issue front-end, per-warp register scoreboard with RAW + WAW interlocks, fixed-latency writeback pipeline that sets/clears pending bits, Greedy-Then-Oldest arbitration (greedy hold on `last_warp`, oldest = lowest ready warp), single-cycle combinational ready→select path, one issue/cycle with one-hot consume strobe, guaranteed-progress (no deadlock) proof, parameterized NW/NREG/WB_LATENCY, independent golden-model TB asserting greedy/progress/no-hazard-escape over directed + randomized programs | [`Day17`](./Day17) |
 | 18 | SIMT Branch-Divergence Reconvergence (IPDOM) Stack | GPU SIMT control-flow hardware, per-warp LIFO of `{pc, rpc, active_mask}` groups, immediate-post-dominator reconvergence, divergent branch reuses TOS as the reconv entry + pushes not-taken/taken sub-groups (taken first), exact lane conservation (`t\|n==parent`, `t&n==0`), uniform-branch collapse (no push), combinational `reconverge` (`pc==rpc`) + `active_lanes=popcount(mask)` divergence-penalty monitor, sticky overflow/underflow guards, parameterized NLANES/PCW/DEPTH, independent golden-stack scoreboard TB (uniform + nested divergence + overflow/underflow + 4000 random legal commands) | [`Day18`](./Day18) |
+| 19 | Streaming Top-K Selection Engine (systolic sorted-insertion array) | GPU top-K primitive (LLM top-K sampling, beam search, k-NN, radix-select) + HFT top-of-book / best-N-quote engine, keeps the K largest `(key, tag)` pairs of a 1-elem/clock stream, parallel compare against all K slots → **monotone** `ge[]` priority-encoded to a single insertion index `pos`, single-cycle conditional shift/insert (hold / insert / shift-neighbour), empty slots = −∞ so the array stays sorted-descending with tag/ID tracked per entry, newer-wins tie rule, provably equal to global top-K (no re-sort), synchronous reset + `flush`, `count_o`/`full_o` occupancy, parameterized K/DW/TW, independent scalar golden-model scoreboard TB (reset, ascending/descending fill+overflow, duplicates, negatives, mid-stream flush, 4000 random) | [`Day19`](./Day19) |
 
 _More days coming._
 
@@ -147,6 +148,12 @@ RTL-Projects-Everyday/
 │   ├── tb_simt_stack.sv           # self-checking testbench (independent golden stack)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # datapath diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day19/
+│   ├── topk_stream_engine.sv      # RTL design (streaming Top-K selection engine)
+│   ├── tb_topk_stream_engine.sv   # self-checking testbench (independent golden Top-K)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # circuit diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
