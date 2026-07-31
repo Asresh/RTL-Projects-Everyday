@@ -35,6 +35,7 @@ documented, simulate-able project every day.
 | 19 | Streaming Top-K Selection Engine (systolic sorted-insertion array) | GPU top-K primitive (LLM top-K sampling, beam search, k-NN, radix-select) + HFT top-of-book / best-N-quote engine, keeps the K largest `(key, tag)` pairs of a 1-elem/clock stream, parallel compare against all K slots → **monotone** `ge[]` priority-encoded to a single insertion index `pos`, single-cycle conditional shift/insert (hold / insert / shift-neighbour), empty slots = −∞ so the array stays sorted-descending with tag/ID tracked per entry, newer-wins tie rule, provably equal to global top-K (no re-sort), synchronous reset + `flush`, `count_o`/`full_o` occupancy, parameterized K/DW/TW, independent scalar golden-model scoreboard TB (reset, ascending/descending fill+overflow, duplicates, negatives, mid-stream flush, 4000 random) | [`Day19`](./Day19) |
 | 20 | Warp Global-Memory Coalescing Unit (GPU LSU front-end) | GPU load/store-unit memory coalescing (the #1 driver of achievable DRAM bandwidth) + HFT scattered-gather fold-in, warp of per-lane byte addresses → minimum aligned cache-line/sector transactions, single-pass **parallel leader detection** (lane leads its segment iff no lower-indexed active lane shares it; `num_txn = popcount(leaders)`), exact-partition `txn_lane_mask`s (pairwise-disjoint, union == `req_mask`), aligned `txn_base = seg << log2(SEG_BYTES)`, sequenced 1-txn/cycle emit in ascending leader order with `txn_index`/`txn_last`, coalescing-efficiency perf counters (`perf_lanes/perf_txns` lanes-per-txn), IDLE→DECODE→EMIT FSM, parameterized LANES/ADDRW/SEG_BYTES, independent golden set-partition scoreboard TB (directed corners + 300 random warps, partition & counter assertions) | [`Day20`](./Day20) |
 | 21 | Pipelined 2:4 Structured-Sparsity Dot-Product Engine | GPU sparse Tensor Core operand/datapath primitive, compressed two-nonzero weights per four activations, per-group dual-index metadata decode + 4:1 selection, `2*GROUPS` signed multipliers, local pair sums + widened final reduction, 1 fragment/clock throughput at fixed 3-cycle latency, duplicate-index validation with zero-contribution containment, parameterized GROUPS/DW, independent signed golden-model scoreboard TB (directed extremes + 1,000 randomized attempts) | [`Day21`](./Day21) |
+| 22 | Parameterized Parallel CRC-32 Engine (Ethernet FCS) | line-rate FPGA/SmartNIC frame-integrity primitive (10G/25G NIC FCS gen+check, HFT tick-to-trade path), reflected IEEE-802.3 CRC-32 (poly `0xEDB88320`, init/xor `0xFFFFFFFF`), bit-serial LFSR step **unrolled `DATA_WIDTH`× at elaboration** into one combinational GF(2) cone → 1 slice/clock (W=8→1 B/clk, W=32→4 B/clk, W=64→8 B/clk), `init`-aware seed mux folded into the combinational current-state so single-beat `init&last` frames match multi-beat behaviour, `en`/`last` frame handshake with registered `result_o`+`result_valid_o`, live `crc_o`, width-generic, independent **bit-serial golden model** + hard-coded `"123456789"→0xCBF43926` IEEE vector + empty-frame + W8-vs-W32 cross-check scoreboard TB (127 checks, directed + 120 random frames) | [`Day22`](./Day22) |
 
 _More days coming._
 
@@ -156,6 +157,12 @@ RTL-Projects-Everyday/
 │   ├── tb_topk_stream_engine.sv   # self-checking testbench (independent golden Top-K)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # circuit diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day22/
+│   ├── crc32_parallel.sv          # RTL design (parameterized unrolled CRC-32 / Ethernet FCS)
+│   ├── tb_crc32_parallel.sv       # self-checking testbench (bit-serial golden + IEEE vector)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # block diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
