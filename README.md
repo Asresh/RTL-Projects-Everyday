@@ -31,6 +31,7 @@ documented, simulate-able project every day.
 | 15 | Pipelined Kogge-Stone Parallel Prefix-Sum (Segmented Scan) Engine | warp-level GPU scan primitive (stream compaction, radix-sort counts, sparse/segmented reduction), log2(N)-depth Kogge-Stone network, 1 vector/clock throughput at log2(N)-cycle latency, segmented scan with per-lane head flags + OR-scan flag propagation, overflow-proof widened accumulators, signed/unsigned, elaboration-generated network, golden segmented-scan scoreboard TB | [`Day15`](./Day15) |
 | 16 | SIMT Shared-Memory Bank-Conflict Resolution Crossbar | GPU shared-memory (CUDA `__shared__`/LDS) bank-conflict + broadcast hardware, word-interleaved bank mapping, per-bank leader-select conflict scheduler, same-address broadcast collapsing, pending-mask retire loop with guaranteed forward progress, `resp_phases` = measured conflict degree, warp-wide read gather, per-lane active mask, parameterized LANES/BANKS/depth, golden-model scoreboard TB (directed corners + 200 random warps) | [`Day16`](./Day16) |
 | 17 | GPU Warp Scheduler (Greedy-Then-Oldest) + Register Scoreboard | NVIDIA-class SM instruction-issue front-end, per-warp register scoreboard with RAW + WAW interlocks, fixed-latency writeback pipeline that sets/clears pending bits, Greedy-Then-Oldest arbitration (greedy hold on `last_warp`, oldest = lowest ready warp), single-cycle combinational ready→select path, one issue/cycle with one-hot consume strobe, guaranteed-progress (no deadlock) proof, parameterized NW/NREG/WB_LATENCY, independent golden-model TB asserting greedy/progress/no-hazard-escape over directed + randomized programs | [`Day17`](./Day17) |
+| 18 | SIMT Branch-Divergence Reconvergence (IPDOM) Stack | GPU SIMT control-flow hardware, per-warp LIFO of `{pc, rpc, active_mask}` groups, immediate-post-dominator reconvergence, divergent branch reuses TOS as the reconv entry + pushes not-taken/taken sub-groups (taken first), exact lane conservation (`t\|n==parent`, `t&n==0`), uniform-branch collapse (no push), combinational `reconverge` (`pc==rpc`) + `active_lanes=popcount(mask)` divergence-penalty monitor, sticky overflow/underflow guards, parameterized NLANES/PCW/DEPTH, independent golden-stack scoreboard TB (uniform + nested divergence + overflow/underflow + 4000 random legal commands) | [`Day18`](./Day18) |
 
 _More days coming._
 
@@ -138,6 +139,12 @@ RTL-Projects-Everyday/
 ├── Day17/
 │   ├── warp_scheduler.sv          # RTL design (GTO warp scheduler + register scoreboard)
 │   ├── tb_warp_scheduler.sv       # self-checking testbench (independent golden model)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # datapath diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day18/
+│   ├── simt_stack.sv              # RTL design (SIMT branch-divergence IPDOM stack)
+│   ├── tb_simt_stack.sv           # self-checking testbench (independent golden stack)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # datapath diagram + captured waveform
 │   └── README.md                  # project write-up
