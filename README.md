@@ -36,6 +36,7 @@ documented, simulate-able project every day.
 | 20 | Warp Global-Memory Coalescing Unit (GPU LSU front-end) | GPU load/store-unit memory coalescing (the #1 driver of achievable DRAM bandwidth) + HFT scattered-gather fold-in, warp of per-lane byte addresses → minimum aligned cache-line/sector transactions, single-pass **parallel leader detection** (lane leads its segment iff no lower-indexed active lane shares it; `num_txn = popcount(leaders)`), exact-partition `txn_lane_mask`s (pairwise-disjoint, union == `req_mask`), aligned `txn_base = seg << log2(SEG_BYTES)`, sequenced 1-txn/cycle emit in ascending leader order with `txn_index`/`txn_last`, coalescing-efficiency perf counters (`perf_lanes/perf_txns` lanes-per-txn), IDLE→DECODE→EMIT FSM, parameterized LANES/ADDRW/SEG_BYTES, independent golden set-partition scoreboard TB (directed corners + 300 random warps, partition & counter assertions) | [`Day20`](./Day20) |
 | 21 | Pipelined 2:4 Structured-Sparsity Dot-Product Engine | GPU sparse Tensor Core operand/datapath primitive, compressed two-nonzero weights per four activations, per-group dual-index metadata decode + 4:1 selection, `2*GROUPS` signed multipliers, local pair sums + widened final reduction, 1 fragment/clock throughput at fixed 3-cycle latency, duplicate-index validation with zero-contribution containment, parameterized GROUPS/DW, independent signed golden-model scoreboard TB (directed extremes + 1,000 randomized attempts) | [`Day21`](./Day21) |
 | 22 | Parameterized Parallel CRC-32 Engine (Ethernet FCS) | line-rate FPGA/SmartNIC frame-integrity primitive (10G/25G NIC FCS gen+check, HFT tick-to-trade path), reflected IEEE-802.3 CRC-32 (poly `0xEDB88320`, init/xor `0xFFFFFFFF`), bit-serial LFSR step **unrolled `DATA_WIDTH`× at elaboration** into one combinational GF(2) cone → 1 slice/clock (W=8→1 B/clk, W=32→4 B/clk, W=64→8 B/clk), `init`-aware seed mux folded into the combinational current-state so single-beat `init&last` frames match multi-beat behaviour, `en`/`last` frame handshake with registered `result_o`+`result_valid_o`, live `crc_o`, width-generic, independent **bit-serial golden model** + hard-coded `"123456789"→0xCBF43926` IEEE vector + empty-frame + W8-vs-W32 cross-check scoreboard TB (127 checks, directed + 120 random frames) | [`Day22`](./Day22) |
+| 23 | Systolic Register-Array Hardware Priority Queue (min-queue) | FPGA packet-scheduler + HFT price-time order-book / event-timer-wheel primitive, single-cycle **enqueue AND extract-min** (both together = replace-min) at deterministic occupancy-independent latency — no heap-in-RAM sift loop, shift-register array kept **sorted ascending** so slot 0 is always the global minimum available combinationally, per-cycle datapath = optional extract-min shift-down → `base[]` → N parallel comparators `gt[i]=(base_key[i]>enq_key)` (monotone) → priority-encoder insertion index `pos` → one-shot conditional shift/insert network, **strict-`>` FIFO-among-equals** tie rule, `DW` payload (order ID/pointer) tracked per entry, `full`/`empty` guards + registered `overflow`/`underflow` pulses, synchronous `flush`, parameterized `N`/`KW`/`DW`, independent scalar golden-PQ scoreboard TB checking head+whole sorted array+counters+flags (4082 checks: reset, fill/overflow, drain/underflow, replace-min, asc/desc/duplicate streams, flush, 4000 random) | [`Day23`](./Day23) |
 
 _More days coming._
 
@@ -163,6 +164,12 @@ RTL-Projects-Everyday/
 │   ├── tb_crc32_parallel.sv       # self-checking testbench (bit-serial golden + IEEE vector)
 │   ├── Makefile                   # simulator run targets
 │   ├── docs/                      # block diagram + captured waveform
+│   └── README.md                  # project write-up
+├── Day23/
+│   ├── priority_queue.sv          # RTL design (systolic register-array min priority queue)
+│   ├── tb_priority_queue.sv       # self-checking testbench (independent scalar golden PQ)
+│   ├── Makefile                   # simulator run targets
+│   ├── docs/                      # circuit diagram + captured waveform
 │   └── README.md                  # project write-up
 └── README.md
 ```
