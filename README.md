@@ -14,15 +14,15 @@ documented, simulate-able project every day.
 
 | Day | Project | Description | Folder |
 |-----|---------|-------------|--------|
-| 1 | Parameterized Synchronous FIFO | Pointer-based FIFO with an occupancy counter and full/empty flags, verified with a self-checking testbench. | [`day1-sync_fifo`](./day1-sync_fifo) |
-| 2 | Parameterized Round-Robin Arbiter | Fair rotating-priority arbiter producing one-hot grants with wrap-around priority masking. | [`day2-round_robin_arbiter`](./day2-round_robin_arbiter) |
-| 3 | Configurable SPI Master (all 4 modes) | Supports all CPOL/CPHA modes with a programmable clock divider and a full-duplex shift engine. | [`day3-spi_master`](./day3-spi_master) |
-| 4 | Asynchronous (dual-clock) FIFO | Clock-domain-crossing FIFO using Gray-coded pointers and two-flop synchronizers for safe full/empty detection. | [`day4-async_fifo`](./day4-async_fifo) |
-| 5 | Configurable UART (TX + RX) | 8-N-1 framing UART with a runtime baud divider and mid-bit sampling, verified via TX→RX loopback. | [`day5-uart_transceiver`](./day5-uart_transceiver) |
-| 6 | Parameterized Sequential Integer Divider | Restoring shift-subtract divider with a multicycle start/busy/done handshake and divide-by-zero policy. | [`day6-sequential_divider`](./day6-sequential_divider) |
-| 7 | AXI4-Lite Slave Register Block | Implements the AW/W/B/AR/R handshakes with byte strobes, OKAY/SLVERR, and RW/RO/W1C register types. | [`day7-axi4lite_regs`](./day7-axi4lite_regs) |
-| 8 | I2C Master Controller | Open-drain wired-AND I2C bus master with START/STOP framing and per-byte ACK/NACK handling. | [`day8-i2c_master`](./day8-i2c_master) |
-| 9 | Pipelined CORDIC Sine/Cosine Engine | Multiplier-free rotation-mode CORDIC computing sine/cosine in fixed-point Q2.13 over the full angle range. | [`day9-cordic_sincos`](./day9-cordic_sincos) |
+| 1 | Parameterized Synchronous FIFO | Pointer-based FIFO with an occupancy counter and full/empty flags, verified with a self-checking testbench. | [`day01-sync_fifo`](./day01-sync_fifo) |
+| 2 | Parameterized Round-Robin Arbiter | Fair rotating-priority arbiter producing one-hot grants with wrap-around priority masking. | [`day02-round_robin_arbiter`](./day02-round_robin_arbiter) |
+| 3 | Configurable SPI Master (all 4 modes) | Supports all CPOL/CPHA modes with a programmable clock divider and a full-duplex shift engine. | [`day03-spi_master`](./day03-spi_master) |
+| 4 | Asynchronous (dual-clock) FIFO | Clock-domain-crossing FIFO using Gray-coded pointers and two-flop synchronizers for safe full/empty detection. | [`day04-async_fifo`](./day04-async_fifo) |
+| 5 | Configurable UART (TX + RX) | 8-N-1 framing UART with a runtime baud divider and mid-bit sampling, verified via TX→RX loopback. | [`day05-uart_transceiver`](./day05-uart_transceiver) |
+| 6 | Parameterized Sequential Integer Divider | Restoring shift-subtract divider with a multicycle start/busy/done handshake and divide-by-zero policy. | [`day06-sequential_divider`](./day06-sequential_divider) |
+| 7 | AXI4-Lite Slave Register Block | Implements the AW/W/B/AR/R handshakes with byte strobes, OKAY/SLVERR, and RW/RO/W1C register types. | [`day07-axi4lite_regs`](./day07-axi4lite_regs) |
+| 8 | I2C Master Controller | Open-drain wired-AND I2C bus master with START/STOP framing and per-byte ACK/NACK handling. | [`day08-i2c_master`](./day08-i2c_master) |
+| 9 | Pipelined CORDIC Sine/Cosine Engine | Multiplier-free rotation-mode CORDIC computing sine/cosine in fixed-point Q2.13 over the full angle range. | [`day09-cordic_sincos`](./day09-cordic_sincos) |
 | 10 | SECDED Hamming ECC Codec | (72,64) single-error-correct/double-error-detect encoder/decoder with syndrome decoding and error injection testing. | [`day10-hamming_secded`](./day10-hamming_secded) |
 | 11 | Pipelined Bitonic Sorting Network | Data-independent compare-exchange sorting network delivering one sorted vector per clock. | [`day11-bitonic_sorter`](./day11-bitonic_sorter) |
 | 12 | Pipelined Radix-4 Booth Multiplier | Modified-Booth recoding with a Wallace carry-save reduction tree for signed/unsigned multiply. | [`day12-booth_multiplier`](./day12-booth_multiplier) |
@@ -72,13 +72,13 @@ Each day's folder is self-contained and generally follows this shape:
 
 ```
 RTL-Projects-Everyday/
-├── day1-sync_fifo/
+├── day01-sync_fifo/
 │   ├── *.sv           # RTL design(s)
 │   ├── tb_*.sv         # self-checking testbench
 │   ├── Makefile        # simulator run targets
 │   ├── docs/           # block diagram + captured waveform (where present)
 │   └── README.md       # project write-up
-├── day2-round_robin_arbiter/
+├── day02-round_robin_arbiter/
 │   └── ...
 ├── ...
 └── day47-load_store_queue/
