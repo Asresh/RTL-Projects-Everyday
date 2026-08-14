@@ -62,6 +62,7 @@ documented, simulate-able project every day.
 | 46 | Descriptor-Driven 2D Strided DMA Engine | Queued-descriptor DMA supporting independent source/destination strides and partial final beats. | [`day46-dma_engine`](./day46-dma_engine) |
 | 47 | Out-of-Order Load/Store Queue with Store-to-Load Forwarding | Age-ordered LQ/SQ with store-to-load forwarding and speculative memory disambiguation. | [`day47-load_store_queue`](./day47-load_store_queue) |
 | 48 | PCIe-Style Link Training and Status State Machine | Multi-lane TS1/TS2 qualification, width negotiation, bounded retries, and speed/link-loss recovery. | [`day48-pcie_ltssm`](./day48-pcie_ltssm) |
+| 49 | Directory-Based Cache-Coherent Home Node | Targeted snoop fanout, response aggregation, dirty-owner data forwarding, memory fallback, and atomic directory updates. | [`day49-coherent_home_node`](./day49-coherent_home_node) |
 
 _More days coming._
 
@@ -82,7 +83,7 @@ RTL-Projects-Everyday/
 ├── day02-round_robin_arbiter/
 │   └── ...
 ├── ...
-└── day48-pcie_ltssm/
+└── day49-coherent_home_node/
     └── ...
 ```
 
