@@ -1,3 +1,4 @@
+<!-- Author: Asresh Kuricheti -->
 # RTL Projects Everyday
 
 A daily series of small, self-contained **RTL design projects** in
@@ -63,6 +64,7 @@ documented, simulate-able project every day.
 | 47 | Out-of-Order Load/Store Queue with Store-to-Load Forwarding | Age-ordered LQ/SQ with store-to-load forwarding and speculative memory disambiguation. | [`day47-load_store_queue`](./day47-load_store_queue) |
 | 48 | PCIe-Style Link Training and Status State Machine | Multi-lane TS1/TS2 qualification, width negotiation, bounded retries, and speed/link-loss recovery. | [`day48-pcie_ltssm`](./day48-pcie_ltssm) |
 | 49 | Directory-Based Cache-Coherent Home Node | Targeted snoop fanout, response aggregation, dirty-owner data forwarding, memory fallback, and atomic directory updates. | [`day49-coherent_home_node`](./day49-coherent_home_node) |
+| 50 | PCIe-Style Data Link Replay Engine | Circular replay RAM with modular sequence tracking, cumulative ACK retirement, selective NAK replay, and timeout recovery. | [`day50-pcie_replay_engine`](./day50-pcie_replay_engine) |
 
 _More days coming._
 
