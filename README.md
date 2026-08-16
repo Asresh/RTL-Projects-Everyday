@@ -65,6 +65,7 @@ documented, simulate-able project every day.
 | 48 | PCIe-Style Link Training and Status State Machine | Multi-lane TS1/TS2 qualification, width negotiation, bounded retries, and speed/link-loss recovery. | [`day48-pcie_ltssm`](./day48-pcie_ltssm) |
 | 49 | Directory-Based Cache-Coherent Home Node | Targeted snoop fanout, response aggregation, dirty-owner data forwarding, memory fallback, and atomic directory updates. | [`day49-coherent_home_node`](./day49-coherent_home_node) |
 | 50 | PCIe-Style Data Link Replay Engine | Circular replay RAM with modular sequence tracking, cumulative ACK retirement, selective NAK replay, and timeout recovery. | [`day50-pcie_replay_engine`](./day50-pcie_replay_engine) |
+| 51 | PCIe-Style Completion Reorder Buffer | Tagged fragment assembly with per-tag payload storage, malformed-completion checks, and strict issue-order retirement. | [`day51-pcie_completion_reorder_buffer`](./day51-pcie_completion_reorder_buffer) |
 
 _More days coming._
 
@@ -85,7 +86,7 @@ RTL-Projects-Everyday/
 ├── day02-round_robin_arbiter/
 │   └── ...
 ├── ...
-└── day49-coherent_home_node/
+└── day51-pcie_completion_reorder_buffer/
     └── ...
 ```
 
