@@ -68,6 +68,7 @@ documented, simulate-able project every day.
 | 51 | PCIe-Style Completion Reorder Buffer | Tagged fragment assembly with per-tag payload storage, malformed-completion checks, and strict issue-order retirement. | [`day51-pcie_completion_reorder_buffer`](./day51-pcie_completion_reorder_buffer) |
 | 52 | AXI4 ID-Aware Read Response Reorder Buffer | Reassembles out-of-order backend beats while preserving per-ID AXI ordering with fair cross-ID retirement and backpressure-safe bursts. | [`day52-axi_read_reorder_buffer`](./day52-axi_read_reorder_buffer) |
 | 53 | Fixed-Point LMS Adaptive FIR Equalizer | Resource-shared adaptive filter with signed fixed-point MACs, saturating LMS coefficient updates, convergence telemetry, and training freeze. | [`day53-lms_adaptive_equalizer`](./day53-lms_adaptive_equalizer) |
+| 54 | March C− SRAM Memory Built-In Self-Test Controller | 10N-operation ascending/descending SRAM test with synchronous-read sequencing and sticky first-failure diagnostics. | [`day54-march_c_mbist`](./day54-march_c_mbist) |
 
 _More days coming._
 
