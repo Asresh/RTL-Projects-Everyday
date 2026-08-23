@@ -70,6 +70,7 @@ documented, simulate-able project every day.
 | 53 | Fixed-Point LMS Adaptive FIR Equalizer | Resource-shared adaptive filter with signed fixed-point MACs, saturating LMS coefficient updates, convergence telemetry, and training freeze. | [`day53-lms_adaptive_equalizer`](./day53-lms_adaptive_equalizer) |
 | 54 | March C− SRAM Memory Built-In Self-Test Controller | 10N-operation ascending/descending SRAM test with synchronous-read sequencing and sticky first-failure diagnostics. | [`day54-march_c_mbist`](./day54-march_c_mbist) |
 | 55 | Input-Queued Packet Switch with iSLIP Scheduling | Virtual output queues, parallel request/grant/accept matching, fair rotating priorities, and backpressure-safe elastic egress. | [`day55-islip_voq_switch`](./day55-islip_voq_switch) |
+| 56 | Programmable Quadrature DDC with CIC Decimation | Runtime-tunable NCO, signed I/Q mixers, and a widened multi-stage CIC filter providing multiplier-free sample-rate reduction. | [`day56-ddc_cic_decimator`](./day56-ddc_cic_decimator) |
 
 _More days coming._
 
