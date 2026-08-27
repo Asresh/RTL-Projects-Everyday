@@ -72,6 +72,7 @@ documented, simulate-able project every day.
 | 55 | Input-Queued Packet Switch with iSLIP Scheduling | Virtual output queues, parallel request/grant/accept matching, fair rotating priorities, and backpressure-safe elastic egress. | [`day55-islip_voq_switch`](./day55-islip_voq_switch) |
 | 56 | Programmable Quadrature DDC with CIC Decimation | Runtime-tunable NCO, signed I/Q mixers, and a widened multi-stage CIC filter providing multiplier-free sample-rate reduction. | [`day56-ddc_cic_decimator`](./day56-ddc_cic_decimator) |
 | 57 | Multi-Domain Power and Reset Sequencer | Dependency-ordered power switching, reset and isolation control with synchronized rail monitoring and sticky timeout diagnostics. | [`day57-power_domain_sequencer`](./day57-power_domain_sequencer) |
+| 58 | Per-Lane DDR Read-Eye Training Controller | Sweeps PHY delay taps, qualifies per-lane error-free windows, centers the widest eye, and reports marginal-lane diagnostics. | [`day58-ddr_read_eye_trainer`](./day58-ddr_read_eye_trainer) |
 
 _More days coming._
 
