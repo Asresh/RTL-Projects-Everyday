@@ -73,6 +73,7 @@ documented, simulate-able project every day.
 | 56 | Programmable Quadrature DDC with CIC Decimation | Runtime-tunable NCO, signed I/Q mixers, and a widened multi-stage CIC filter providing multiplier-free sample-rate reduction. | [`day56-ddc_cic_decimator`](./day56-ddc_cic_decimator) |
 | 57 | Multi-Domain Power and Reset Sequencer | Dependency-ordered power switching, reset and isolation control with synchronized rail monitoring and sticky timeout diagnostics. | [`day57-power_domain_sequencer`](./day57-power_domain_sequencer) |
 | 58 | Per-Lane DDR Read-Eye Training Controller | Sweeps PHY delay taps, qualifies per-lane error-free windows, centers the widest eye, and reports marginal-lane diagnostics. | [`day58-ddr_read_eye_trainer`](./day58-ddr_read_eye_trainer) |
+| 59 | SoC Clock Health and Failover Manager | Synchronizes heartbeat toggles, qualifies clock sources, records sticky failures, and handshakes priority failover. | [`day59-clock_failover_manager`](./day59-clock_failover_manager) |
 
 _More days coming._
 
