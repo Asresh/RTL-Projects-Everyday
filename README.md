@@ -74,6 +74,7 @@ documented, simulate-able project every day.
 | 57 | Multi-Domain Power and Reset Sequencer | Dependency-ordered power switching, reset and isolation control with synchronized rail monitoring and sticky timeout diagnostics. | [`day57-power_domain_sequencer`](./day57-power_domain_sequencer) |
 | 58 | Per-Lane DDR Read-Eye Training Controller | Sweeps PHY delay taps, qualifies per-lane error-free windows, centers the widest eye, and reports marginal-lane diagnostics. | [`day58-ddr_read_eye_trainer`](./day58-ddr_read_eye_trainer) |
 | 59 | SoC Clock Health and Failover Manager | Synchronizes heartbeat toggles, qualifies clock sources, records sticky failures, and handshakes priority failover. | [`day59-clock_failover_manager`](./day59-clock_failover_manager) |
+| 60 | Non-Blocking Cache MSHR Bank | Tracks concurrent line misses, merges secondary misses, accepts tagged out-of-order fills, and replays results to every waiter. | [`day60-nonblocking_cache_mshr`](./day60-nonblocking_cache_mshr) |
 
 _More days coming._
 
