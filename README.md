@@ -76,6 +76,7 @@ documented, simulate-able project every day.
 | 59 | SoC Clock Health and Failover Manager | Synchronizes heartbeat toggles, qualifies clock sources, records sticky failures, and handshakes priority failover. | [`day59-clock_failover_manager`](./day59-clock_failover_manager) |
 | 60 | Non-Blocking Cache MSHR Bank | Tracks concurrent line misses, merges secondary misses, accepts tagged out-of-order fills, and replays results to every waiter. | [`day60-nonblocking_cache_mshr`](./day60-nonblocking_cache_mshr) |
 | 61 | Multi-Lane SerDes PCS Deskew and Elastic Buffer | Aligns independently arriving lane markers with per-lane elastic FIFOs, lockstep vector delivery, backpressure, and sticky link diagnostics. | [`day61-serdes_deskew_buffer`](./day61-serdes_deskew_buffer) |
+| 62 | Multi-Context RISC-V PLIC Interrupt Controller | Prioritizes edge/level interrupt gateways across independent contexts with enables, thresholds, atomic claim/complete service, and sticky diagnostics. | [`day62-riscv_plic`](./day62-riscv_plic) |
 
 _More days coming._
 
